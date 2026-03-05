@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated": "2026-03-05T01:07:01.265Z",
+    "generated": "2026-03-05T01:33:08.291Z",
     "source": "marketplace.extended.json",
     "generator": "scripts/sync-catalog.mjs"
   },
@@ -43,7 +43,7 @@
     },
     "featured": 2,
     "new": 294,
-    "generatedAt": "2026-03-05T01:07:01.265Z"
+    "generatedAt": "2026-03-05T01:33:08.291Z"
   },
   "plugins": [
     {
