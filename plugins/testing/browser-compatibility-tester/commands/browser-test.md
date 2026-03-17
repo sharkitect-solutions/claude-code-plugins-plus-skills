@@ -1,7 +1,6 @@
 ---
 name: browser-test
-description: >
-  Cross-browser compatibility testing across multiple browsers, devices, and cloud providers
+description: Cross-browser testing across browsers, devices, and cloud providers
 shortcut: bt
 ---
 # Browser Compatibility Tester
