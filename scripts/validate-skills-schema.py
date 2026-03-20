@@ -83,8 +83,8 @@ OPTIONAL_FIELDS = {
 # Deprecated fields (warn but don't error)
 DEPRECATED_FIELDS = {'when_to_use'}
 
-# Enterprise recommended sections (not required in standard tier)
-ENTERPRISE_SECTIONS = [
+# Recommended sections (best practices, not mandated by any published standard)
+RECOMMENDED_SECTIONS = [
     "# ",  # title line
     "## Overview",
     "## Prerequisites",
@@ -95,8 +95,9 @@ ENTERPRISE_SECTIONS = [
     "## Resources",
 ]
 
-# Backward compat alias
-REQUIRED_SECTIONS = ENTERPRISE_SECTIONS
+# Backward compat aliases
+ENTERPRISE_SECTIONS = RECOMMENDED_SECTIONS
+REQUIRED_SECTIONS = RECOMMENDED_SECTIONS
 
 # Regex patterns
 RE_FRONTMATTER = re.compile(r"^---\s*\n(.*?)\n---\s*\n(.*)$", re.DOTALL)
@@ -105,6 +106,7 @@ RE_DESCRIPTION_TRIGGER_WITH = re.compile(r"\bTrigger with\b", re.IGNORECASE)
 RE_SKILLDIR_SCRIPTS = re.compile(r"\$\{CLAUDE_SKILL_DIR\}/scripts/([\w\-./]+)")
 RE_SKILLDIR_REFERENCES = re.compile(r"\$\{CLAUDE_SKILL_DIR\}/references/([\w\-./]+)")
 RE_SKILLDIR_ASSETS = re.compile(r"\$\{CLAUDE_SKILL_DIR\}/assets/([\w\-./]+)")
+RE_RELATIVE_MD_LINK = re.compile(r"\[([^\]]*)\]\(((?!https?://|#)[^)]+)\)")
 RE_FIRST_PERSON = re.compile(r"\b(I can|I will|I'm going to|I help)\b", re.IGNORECASE)
 RE_SECOND_PERSON = re.compile(r"\b(You can|You should|You will)\b", re.IGNORECASE)
 FORBIDDEN_WORDS = ("anthropic", "claude")
@@ -162,7 +164,7 @@ def score_progressive_disclosure(path: Path, body: str, fm: dict) -> dict:
     - Token Economy (10): SKILL.md line count
     - Layered Structure (10): Has references/ directory with content
     - Reference Depth (5): References are one level deep only
-    - Navigation Signals (5): Has TOC for long files
+    - Navigation Signals (5): Well-structured sections for navigability
     """
     breakdown = {}
     lines = len(body.splitlines())
@@ -196,6 +198,12 @@ def score_progressive_disclosure(path: Path, body: str, fm: dict) -> dict:
         else:
             breakdown['layered_structure'] = (0, "No references/ (long skill needs extraction)")
 
+    # Info note: dynamic injection + references/ = sophisticated progressive disclosure
+    has_dynamic_injection = bool(re.search(r'(?m)^!\`[^`]+\`\s*$', body))
+    if has_dynamic_injection and refs_dir.exists() and refs_dir.glob("*.md"):
+        score, msg = breakdown['layered_structure']
+        breakdown['layered_structure'] = (score, msg + " + dynamic injection")
+
     # Reference Depth (5 pts) - One level deep only (no nested subdirs in references/)
     if refs_dir.exists():
         nested_dirs = [d for d in refs_dir.iterdir() if d.is_dir()]
@@ -206,15 +214,20 @@ def score_progressive_disclosure(path: Path, body: str, fm: dict) -> dict:
     else:
         breakdown['reference_depth'] = (5, "N/A - no references/")
 
-    # Navigation Signals (5 pts) - TOC for files >100 lines
-    has_toc = bool(re.search(r'(?mi)^##?\s*(table of contents|contents|toc)\b', body))
-    has_nav_links = bool(re.search(r'\[.*?\]\(#.*?\)', body))  # Anchor links
+    # Navigation Signals (5 pts) - Well-structured sections for navigability
+    # Note: No published standard mandates specific sections. Scoring is softened
+    # to reflect that these are best practices, not requirements.
+    sections = len(re.findall(r'(?m)^##\s+', body))
     if lines <= 100:
-        breakdown['navigation_signals'] = (5, "Short file, TOC optional")
-    elif has_toc or has_nav_links:
-        breakdown['navigation_signals'] = (5, "Has navigation/TOC")
+        breakdown['navigation_signals'] = (5, "Short file, navigation implicit")
+    elif sections >= 7:
+        breakdown['navigation_signals'] = (5, f"Well-structured: {sections} section headers")
+    elif sections >= 4:
+        breakdown['navigation_signals'] = (4, f"Adequate structure: {sections} sections (7+ ideal)")
+    elif sections >= 2:
+        breakdown['navigation_signals'] = (2, f"Minimal structure: {sections} sections (4+ recommended)")
     else:
-        breakdown['navigation_signals'] = (0, "Long file needs TOC/navigation")
+        breakdown['navigation_signals'] = (0, f"Poor structure: only {sections} sections")
 
     total = sum(v[0] for v in breakdown.values())
     return {'score': total, 'max': 30, 'breakdown': breakdown}
@@ -529,7 +542,7 @@ def calculate_modifiers(path: Path, body: str, fm: dict) -> dict:
     """
     Modifiers (±15 pts)
     Bonuses: gerund name, grep-friendly, exemplary examples
-    Penalties: first/second person description, no TOC on long file
+    Penalties: first/second person description, unnecessary TOC
     """
     modifiers = {}
     name = str(fm.get('name', ''))
@@ -564,10 +577,16 @@ def calculate_modifiers(path: Path, body: str, fm: dict) -> dict:
     if 'i can' in desc_lower or 'i will' in desc_lower or 'you can' in desc_lower or 'you should' in desc_lower:
         modifiers['person_in_desc'] = (-2, "first/second person in description")
 
-    # No TOC on long file -2
+    # TOC wastes tokens — Anthropic spec doesn't require it, progressive disclosure does
     has_toc = bool(re.search(r'(?mi)^##?\s*(table of contents|contents|toc)\b', body))
-    if lines > 150 and not has_toc:
-        modifiers['missing_toc'] = (-2, "long file needs TOC")
+    if has_toc:
+        modifiers['unnecessary_toc'] = (-1, "TOC wastes tokens — use clear section headers instead")
+
+    # Dynamic context injection (Anthropic spec feature) +1
+    has_dynamic_injection = bool(re.search(r'(?m)^!\`[^`]+\`\s*$', body))
+    if has_dynamic_injection:
+        injection_count = len(re.findall(r'(?m)^!\`[^`]+\`\s*$', body))
+        modifiers['dynamic_injection'] = (+1, f"Uses preprocessing injection ({injection_count} directives)")
 
     # XML tags in body (anti-pattern) -1
     if '<' in body and '>' in body and re.search(r'<[a-z]+>', body):
@@ -1192,13 +1211,16 @@ def validate_frontmatter(path: Path, fm: dict, tier: str = TIER_STANDARD) -> Tup
     return errors, warnings, infos
 
 
-def validate_body(path: Path, body: str, tier: str = TIER_STANDARD) -> Tuple[List[str], List[str]]:
+def validate_body(path: Path, body: str, tier: str = TIER_STANDARD, fm: dict = None) -> Tuple[List[str], List[str], List[str]]:
     """
     Validate SKILL.md body content.
-    Returns: (errors, warnings)
+    Returns: (errors, warnings, infos)
     """
     errors: List[str] = []
     warnings: List[str] = []
+    infos: List[str] = []
+    if fm is None:
+        fm = {}
     lines = body.splitlines()
 
     # === LENGTH CHECKS ===
@@ -1241,13 +1263,13 @@ def validate_body(path: Path, body: str, tier: str = TIER_STANDARD) -> Tuple[Lis
         return False
 
     if tier == TIER_ENTERPRISE:
-        for sec in ENTERPRISE_SECTIONS:
+        for sec in RECOMMENDED_SECTIONS:
             if sec == "# ":
                 if not has_markdown_h1(body):
-                    warnings.append(f"[body] Recommended section missing: '{sec}' (enterprise quality standard)")
+                    warnings.append(f"[body] Recommended section missing: '{sec}' (best practice, not spec-mandated)")
             else:
                 if not has_heading_line(body, sec):
-                    warnings.append(f"[body] Recommended section missing: '{sec}' (enterprise quality standard)")
+                    warnings.append(f"[body] Recommended section missing: '{sec}' (best practice, not spec-mandated)")
 
     # === LEE HAN CHUNG: SECTION CONTENT MUST BE NON-EMPTY ===
 
@@ -1468,12 +1490,20 @@ def validate_body(path: Path, body: str, tier: str = TIER_STANDARD) -> Tuple[Lis
             if not re.search(rf'#.*{num}', block):  # No comment explaining it
                 warnings.append(f"[scripts] Code block {i+1}: Magic number '{num}' - add comment explaining why")
 
+    # === STRING SUBSTITUTION CHECKS ===
+    # Detect $ARGUMENTS / $ARGUMENTS[N] / $0-$9 usage and validate argument-hint presence
+    has_arguments = bool(re.search(r'\$ARGUMENTS', body))
+    has_positional = bool(re.search(r'\$[0-9]', body))
+    if (has_arguments or has_positional) and 'argument-hint' not in fm:
+        infos.append("[body] Uses $ARGUMENTS/$N but 'argument-hint' frontmatter is missing — "
+                     "add argument-hint for autocomplete support (per official docs)")
+
     # === VOICE CHECKS ===
 
     if re.search(r'\byou should\b|\byou can\b|\byou will\b', body, re.IGNORECASE):
         warnings.append("[body] Consider imperative language instead of 'you should/can/will'")
 
-    return errors, warnings
+    return errors, warnings, infos
 
 
 def validate_scripts_exist(path: Path, body: str) -> Tuple[List[str], List[str]]:
@@ -1539,6 +1569,53 @@ def validate_resource_files_exist(path: Path, body: str) -> Tuple[List[str], Lis
             warnings.append(
                 f"[resources] Referenced file not found: '${{CLAUDE_SKILL_DIR}}/assets/{rel}' "
                 f"(expected at {skill_dir.name}/assets/{rel})"
+            )
+
+    return errors, warnings
+
+
+def validate_relative_links(path: Path, body: str) -> Tuple[List[str], List[str]]:
+    """
+    Validate that relative markdown links in SKILL.md point to existing files.
+    Per Anthropic docs, [text](relative-path) is the official pattern for supporting files.
+    Returns (errors, warnings).
+    """
+    errors: List[str] = []
+    warnings: List[str] = []
+    skill_dir = path.parent.resolve()
+
+    # Skip links inside code blocks and inline code
+    in_code_block = False
+    filtered_lines = []
+    for line in body.splitlines():
+        if CODE_FENCE_PATTERN.match(line):
+            in_code_block = not in_code_block
+        if not in_code_block:
+            # Strip inline code spans to avoid matching example links
+            filtered_lines.append(re.sub(r'`[^`]+`', '', line))
+    filtered_body = "\n".join(filtered_lines)
+
+    for match in RE_RELATIVE_MD_LINK.finditer(filtered_body):
+        link_text = match.group(1)
+        link_target = match.group(2)
+
+        # Skip anchors, mailto, and template variables
+        if link_target.startswith(("#", "mailto:", "${")):
+            continue
+
+        target_path = (skill_dir / link_target).resolve()
+
+        # Ensure path doesn't escape skill directory
+        try:
+            target_path.relative_to(skill_dir)
+        except ValueError:
+            errors.append(f"[relative-link] Link escapes skill directory: [{link_text}]({link_target})")
+            continue
+
+        if not target_path.exists():
+            warnings.append(
+                f"[relative-link] Linked file not found: [{link_text}]({link_target}) "
+                f"(expected at {skill_dir.name}/{link_target})"
             )
 
     return errors, warnings
@@ -1763,6 +1840,126 @@ def detect_boilerplate(skill_path: Path) -> Tuple[List[str], List[str]]:
     return errors, warnings
 
 
+# === STRUCTURAL ADVISORS (suggest architecture improvements) ===
+
+RE_OPERATION_HEADER = re.compile(r'^##\s+[\w-]+(?:\s*\(.*\))?\s*$', re.MULTILINE)
+
+
+def advise_split_to_commands(path: Path, body: str) -> List[str]:
+    """
+    Detect multiple distinct operation sections that would be better as
+    individual commands/*.md files. Looks for 3+ ## headers that follow
+    step/operation naming patterns (## verb-noun, ## Step N: name, ## N. name).
+    Returns info-level suggestions.
+    """
+    infos: List[str] = []
+    skill_dir = path.parent.resolve()
+
+    # Walk up to find the plugin root (directory containing .claude-plugin/)
+    plugin_dir = None
+    for parent in skill_dir.parents:
+        if (parent / ".claude-plugin").exists():
+            plugin_dir = parent
+            break
+
+    # Find ## headers that look like distinct user-invocable operations
+    # Only matches kebab-case names (## verb-noun) — the clearest signal
+    operation_pattern = re.compile(
+        r'^##\s+(?:\d+\.\s+)?([\w]+-[\w]+(?:-[\w]+)*)\s*$', re.MULTILINE
+    )
+    operations = operation_pattern.findall(body)
+
+    if len(operations) >= 3:
+        # Check if plugin already has commands/ directory
+        has_commands = plugin_dir and (plugin_dir / "commands").exists()
+
+        if not has_commands:
+            op_list = ", ".join(operations[:5])
+            infos.append(
+                f"[advisor] Found {len(operations)} operation sections ({op_list}). "
+                f"Consider splitting into individual commands/*.md files for independent invocation."
+            )
+
+    return infos
+
+
+def advise_offload_to_references(path: Path, body: str) -> List[str]:
+    """
+    Identify body sections >20 lines that could be offloaded to references/.
+    Returns info-level suggestions.
+    """
+    infos: List[str] = []
+    skill_dir = path.parent.resolve()
+    refs_dir = skill_dir / "references"
+
+    # Split body by ## headers
+    sections: List[Tuple[str, int]] = []
+    current_header = ""
+    current_lines = 0
+
+    for line in body.splitlines():
+        if line.startswith("## "):
+            if current_header and current_lines > 0:
+                sections.append((current_header, current_lines))
+            current_header = line.strip("# ").strip()
+            current_lines = 0
+        else:
+            current_lines += 1
+
+    if current_header and current_lines > 0:
+        sections.append((current_header, current_lines))
+
+    # Flag sections >20 lines that are good candidates for references
+    offload_candidates = ["Output", "Error Handling", "Examples", "Resources",
+                          "Reference", "API", "Configuration", "Schema"]
+    for header, line_count in sections:
+        if line_count > 20:
+            is_candidate = any(kw.lower() in header.lower() for kw in offload_candidates)
+            if is_candidate and not refs_dir.exists():
+                infos.append(
+                    f"[advisor] Section '## {header}' is {line_count} lines. "
+                    f"Consider offloading to references/{header.lower().replace(' ', '-')}.md "
+                    f"with a relative link: [details](references/{header.lower().replace(' ', '-')}.md)"
+                )
+
+    return infos
+
+
+def advise_dci_opportunities(path: Path, body: str) -> List[str]:
+    """
+    Detect patterns where DCI (dynamic context injection) would save tool calls.
+    Returns info-level suggestions.
+    """
+    infos: List[str] = []
+
+    # Already has DCI? Skip.
+    has_dci = bool(re.search(r'(?m)^!\`[^`]+\`\s*$', body))
+    if has_dci:
+        return infos
+
+    # Patterns that suggest DCI would help
+    dci_triggers = [
+        (r'(?i)check if .+ exists', "file existence check",
+         '!`[ -f FILE ] && echo "exists" || echo "not found"`'),
+        (r'(?i)read .+\.md', "file reading at start",
+         '!`[ -f FILE ] && head -5 FILE || echo "not found"`'),
+        (r'(?i)git status|git log|git branch', "git state discovery",
+         '!`git status --short 2>/dev/null || echo "not a git repo"`'),
+        (r'(?i)check (?:which |if )?(?:node|python|docker|terraform|npm|pnpm)', "tool version check",
+         '!`command -v TOOL 2>/dev/null && TOOL --version 2>/dev/null || echo "not installed"`'),
+    ]
+
+    for pattern, desc, example in dci_triggers:
+        if re.search(pattern, body):
+            infos.append(
+                f"[advisor] Skill performs {desc} — consider DCI to auto-detect at activation: "
+                f"`{example}`"
+            )
+            break  # One suggestion is enough
+
+    return infos
+
+
 def validate_skill(path: Path, tier: str = TIER_STANDARD) -> Dict[str, Any]:
     """
     Validate a single SKILL.md file.
@@ -1799,9 +1996,10 @@ def validate_skill(path: Path, tier: str = TIER_STANDARD) -> Dict[str, Any]:
     infos.extend(fm_infos)
 
     # Validate body
-    body_errors, body_warnings = validate_body(path, body, tier)
+    body_errors, body_warnings, body_infos = validate_body(path, body, tier, fm)
     errors.extend(body_errors)
     warnings.extend(body_warnings)
+    infos.extend(body_infos)
 
     # Validate scripts
     script_errors, script_warnings = validate_scripts_exist(path, body)
@@ -1812,6 +2010,11 @@ def validate_skill(path: Path, tier: str = TIER_STANDARD) -> Dict[str, Any]:
     resource_errors, resource_warnings = validate_resource_files_exist(path, body)
     errors.extend(resource_errors)
     warnings.extend(resource_warnings)
+
+    # Validate relative markdown links (Anthropic-recommended pattern)
+    link_errors, link_warnings = validate_relative_links(path, body)
+    errors.extend(link_errors)
+    warnings.extend(link_warnings)
 
     # === CONTENT QUALITY VALIDATION (Hightower feedback) ===
     # Validate files listed in references/README.md and assets/README.md actually exist
@@ -1833,6 +2036,12 @@ def validate_skill(path: Path, tier: str = TIER_STANDARD) -> Dict[str, Any]:
     boilerplate_errors, boilerplate_warnings = detect_boilerplate(path)
     errors.extend(boilerplate_errors)
     warnings.extend(boilerplate_warnings)
+
+    # === STRUCTURAL ADVISORS (enterprise tier only) ===
+    if tier == TIER_ENTERPRISE:
+        infos.extend(advise_split_to_commands(path, body))
+        infos.extend(advise_offload_to_references(path, body))
+        infos.extend(advise_dci_opportunities(path, body))
 
     description = str(fm.get("description") or "")
 
@@ -1962,6 +2171,9 @@ def main() -> int:
             if result['warnings']:
                 for warning in result['warnings']:
                     print(f"   WARN: {warning}")
+            if result.get('infos'):
+                for info in result['infos']:
+                    print(f"   INFO: {info}")
 
             # Always show grade in single-file mode
             print(f"\n{'=' * 70}")
@@ -2115,7 +2327,13 @@ def main() -> int:
                 files_with_warnings.append(str(rel))
             has_issues = True
 
-        if verbose and not has_issues and not args.json:
+        if result.get('infos') and verbose and not args.json:
+            if not has_issues:
+                print(f"💡 {rel}:")
+            for info in result['infos']:
+                print(f"   INFO: {info}")
+
+        if verbose and not has_issues and not result.get('infos') and not args.json:
             print(f"✅ {rel} - {letter} ({score}/100) ({result['word_count']} words, {result['line_count']} lines)")
 
         if not result['errors'] and not result['warnings']:

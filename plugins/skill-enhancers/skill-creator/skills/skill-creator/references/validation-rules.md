@@ -37,8 +37,10 @@ Detailed sub-criteria for the Intent Solutions 100-point grading system.
 - 5 pts: N/A (no references directory)
 
 ### Navigation Signals (5 pts)
-- 5 pts: Short file (≤100 lines) OR has TOC/anchor links
-- 0 pts: Long file without navigation
+- 5 pts: Short file (≤100 lines) OR ≥7 section headers
+- 4 pts: 4-6 section headers (>100 lines)
+- 2 pts: 2-3 section headers (>100 lines)
+- 0 pts: 0-1 section headers (>100 lines)
 
 ---
 
@@ -137,5 +139,25 @@ Detailed sub-criteria for the Intent Solutions 100-point grading system.
 
 ### Penalties
 - -2: First/second person in description
-- -2: Long file (>150 lines) without TOC
 - -1: XML-like tags in body
+- -1: TOC wastes tokens (use clear section headers instead)
+
+### Relative Markdown Links
+- Validator checks that relative markdown links (e.g., `[ref](reference.md)`, `[api](references/api.md)`) point to existing files
+- Links to URLs (`https://...`) are ignored
+- Broken relative links produce a warning
+
+### DCI Bonus
+- +1: Uses dynamic context injection (`` !`command` `` directives)
+
+---
+
+## Structural Advisors (Enterprise Tier)
+
+INFO-level suggestions emitted after grading. Not scored — purely advisory.
+
+| Advisor | Trigger | Suggestion |
+|---------|---------|------------|
+| Split to Commands | 3+ kebab-case `## op-name` sections, no `commands/` | Split into individual `commands/*.md` |
+| Offload to References | Sections >20 lines (Output, Error Handling, etc.), no `references/` | Move to `references/` with relative link |
+| DCI Opportunities | File checks, git ops, or tool detection without DCI | Add `` !`command` `` directives |

@@ -199,15 +199,37 @@ Additional guidelines:
 - Keep under 500 lines (offload to `references/` if longer)
 - Concise — Claude is smart, don't over-explain
 - Concrete examples over abstract descriptions
-- Use `${CLAUDE_SKILL_DIR}/` for internal file references in the skills you create
+- Reference supporting files with relative markdown links: `[details](reference.md)` or `[API](references/api.md)` — Claude reads these on demand
+- Use `${CLAUDE_SKILL_DIR}/` in DCI/bash contexts only: `` !`cat ${CLAUDE_SKILL_DIR}/references/small.md` ``
+- Sections >20 lines (Output, Error Handling, Examples) → offload to `references/` with relative links
+- If skill has 3+ distinct user operations → split into individual `commands/*.md` files
+- Add DCI for common discovery: file existence checks, git status, tool version detection
 - Include edge cases that actually matter
 - No time-sensitive information
 - Consistent terminology throughout
 
 **String substitutions available:**
-- `$ARGUMENTS` / `$0`, `$1` - user-provided arguments
-- `${CLAUDE_SESSION_ID}` - current session ID
-- `` !`command` `` - dynamic context injection
+- `$ARGUMENTS` / `$0`, `$1` - user-provided arguments (pair with `argument-hint` frontmatter)
+- `${CLAUDE_SESSION_ID}` - current session identifier
+
+**Dynamic Context Injection (DCI):**
+DCI runs shell commands BEFORE Claude sees the skill content, injecting output verbatim. This eliminates discovery tool calls — Claude starts with context already loaded.
+
+Syntax: `` !`command` `` on its own line (Anthropic preprocessing spec).
+
+Best practices:
+- Add a `## Current State` section with DCI directives right after the title
+- Always use fallbacks: `` !`terraform version 2>/dev/null || echo 'not installed'` ``
+- Keep injections small — summaries and version info, not full file contents
+- For skills that typically run 3+ discovery commands first, DCI saves those entire tool call rounds
+
+Example:
+```markdown
+## Current State
+!`git status --short`
+!`git log --oneline -5`
+!`node -v 2>/dev/null || echo 'N/A'`
+```
 
 ### Step 5: Create Supporting Files
 
