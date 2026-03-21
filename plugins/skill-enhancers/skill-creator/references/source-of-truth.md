@@ -1,22 +1,23 @@
 # Claude Agent Skills: Source of Truth Specification
 
 Canonical reference synthesizing all authoritative sources:
-- **AgentSkills.io** (open standard specification)
-- **Anthropic Best Practices** (platform.claude.com)
-- **Claude Code Extensions** (platform-specific fields)
-- **Anthropic Engineering Blog** (progressive disclosure, degrees of freedom)
-- **anthropics/skills** (official skill-creator reference implementation)
+- **AgentSkills.io** — [agentskills.io/specification](https://agentskills.io/specification) (open standard, Dec 2025)
+- **Anthropic Best Practices** — [code.claude.com/docs/en/skills](https://code.claude.com/docs/en/skills)
+- **Claude Code Extensions** — platform-specific fields ([changelog](https://code.claude.com/docs/en/changelog))
+- **Anthropic Engineering Blog** — progressive disclosure, degrees of freedom
+- **anthropics/skills** — [github.com/anthropics/skills](https://github.com/anthropics/skills) (official skill-creator reference implementation)
+- **Lee Han Chung Deep Dive** — [leehanchung.github.io](https://leehanchung.github.io/blogs/2025/10/26/claude-skills-deep-dive/) (authoritative technical reference)
 
 ---
 
 ## 1. Frontmatter Fields
 
-### Recommended (Anthropic Spec)
+### Required (AgentSkills.io Spec)
 
-| Field | Type | Constraints | Notes |
-|-------|------|-------------|-------|
-| `name` | string | 1-64 chars, lowercase alphanumeric + hyphens, no start/end/consecutive hyphens, must match directory name | Recommended (not required per Anthropic spec) |
-| `description` | string | 1-1024 chars, non-empty, what it does + when to use it, third person, specific keywords for discovery | Recommended (not required per Anthropic spec) |
+| Field | Type | Constraints |
+|-------|------|-------------|
+| `name` | string | 1-64 chars, lowercase alphanumeric + hyphens, no start/end/consecutive hyphens, must match directory name |
+| `description` | string | 1-1024 chars, non-empty, what it does + when to use it, third person, specific keywords for discovery |
 
 ### Optional (AgentSkills.io Spec)
 
@@ -40,8 +41,10 @@ Canonical reference synthesizing all authoritative sources:
 | `disable-model-invocation` | boolean | Prevent auto-loading; require explicit `/name` invocation |
 | `user-invocable` | boolean | `false` = hide from `/` menu (background knowledge only) |
 | `model` | string | Model override: `inherit`, `sonnet`, `haiku`, `opus`, or model ID |
+| `effort` | string | Model reasoning effort override: `low`, `medium`, `high`, `max` (v2.1.80+) |
 | `context` | string | `fork` = execute in subagent (isolated context) |
 | `agent` | string | Subagent type when `context: fork`: `Explore`, `Plan`, `general-purpose`, or custom agent name |
+| `skills` | array | List of skill names to preload into subagent context (v2.1.78+) |
 | `hooks` | object | Skill-scoped lifecycle hooks (PreToolUse, PostToolUse, etc.) |
 
 ### Field Relationships
@@ -51,6 +54,8 @@ Canonical reference synthesizing all authoritative sources:
 - `allowed-tools` is experimental; scoped Bash like `Bash(git:*)` is best practice but not enforced by runtime
 - `author`, `version`, `license`, `tags`, `compatible-with` are TOP-LEVEL fields (marketplace validator scores them at top-level)
 - `metadata` is for custom data not covered by the spec (category, maintainer, etc.)
+- `effort` overrides model reasoning effort (v2.1.80+, works independently of other fields)
+- `skills` field in agent definitions preloads named skills into subagent context
 
 ---
 
@@ -106,7 +111,7 @@ Skills use progressive disclosure to minimize context window usage.
 ### Level 3: Bundled Resources (unlimited)
 - `references/`, `scripts/`, `templates/`, `assets/`
 - Loaded only when explicitly needed during execution
-- TOC recommended for reference files >100 lines
+- Use clear section headers for navigability (TOC not required — wastes tokens)
 - Heavy content belongs here, not in SKILL.md body
 
 ### Design Implications
@@ -249,28 +254,13 @@ Skills frequently undertrigger because descriptions are too passive. Use aggress
 | Edge cases | What to watch for | Common pitfalls |
 | Resources | Links to bundled files | `{baseDir}/` paths |
 
-### Enterprise Recommended Sections
-
-Enterprise-tier skills are scored on the presence of these 8 sections (warnings, not errors):
-
-1. Title (`# Name`)
-2. Brief description
-3. Instructions (step-by-step workflow)
-4. Examples (concrete input/output)
-5. Edge cases
-6. Error handling
-7. Resources (bundled file references)
-8. Verification/testing guidance
-
-These are scored in enterprise validation but not enforced in standard tier.
-
 ### Content Quality
 
 - Concrete examples over abstract explanations
 - Show input AND expected output
 - Include edge cases that actually occur
 - One-level-deep file references only
-- TOC for reference files >100 lines
+- Clear section headers for navigability (TOC not required)
 - Code blocks with language identifiers
 
 ---
@@ -300,10 +290,35 @@ Run the following to get context:
 Session tracking: ${CLAUDE_SESSION_ID}
 ```
 
+### When to Use Backtick Injection vs Manual Loading
+
+| Scenario | Method | Why |
+|----------|--------|-----|
+| Always-needed, small (<5KB) | `` !`cat ${CLAUDE_SKILL_DIR}/references/small.md` `` | Saves a Read tool call, always available |
+| Conditional (mode-dependent) | Manual `Load ${CLAUDE_SKILL_DIR}/references/...` | Only loads when the branch executes |
+| Large (>5KB) | Manual load | Avoids bloating context on every activation |
+| Dynamic state (git log, env) | `` !`git log --oneline -5` `` | Fresh data at activation time |
+
+### Best Practices
+
+- Add a `## Current State` section with DCI directives right after the skill title heading
+- Always use fallbacks to avoid error output: `` !`terraform version 2>/dev/null || echo 'not installed'` ``
+- Keep injections small — summaries and version info, not full file contents
+- For skills that typically run 3+ discovery commands first, DCI saves those entire tool call rounds
+
+Example `## Current State` section:
+```markdown
+## Current State
+!`git status --short`
+!`git log --oneline -5`
+!`node -v 2>/dev/null || echo 'N/A'`
+```
+
 ### Notes
 
 - `$ARGUMENTS` is empty string if no arguments provided
-- `` !`command` `` runs at skill activation time, output injected into body
+- `` !`command` `` runs at skill **activation** time (preprocessing), not on demand
+- Output is injected verbatim into the SKILL.md body before Claude sees it
 - Guard against empty arguments in instructions
 
 ---

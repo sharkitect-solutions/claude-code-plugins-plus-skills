@@ -6,12 +6,12 @@ Complete reference for SKILL.md frontmatter fields aligned with:
 
 ---
 
-## Recommended Fields (Anthropic Spec)
+## Required Fields (AgentSkills.io Minimum)
 
 ### name
 
 - **Type**: string
-- **Required**: No (recommended)
+- **Required**: Yes
 - **Format**: kebab-case (lowercase letters, numbers, hyphens)
 - **Length**: 1-64 characters
 - **Rules**:
@@ -35,14 +35,14 @@ name: my--skill           # Bad - consecutive hyphens
 ### description
 
 - **Type**: string (multi-line with `|` supported)
-- **Required**: No (recommended, per Anthropic spec)
+- **Required**: Yes
 - **Length**: 1-1024 characters
 - **Rules**:
-  - SHOULD be third person ("Generates...", "Analyzes...")
-  - SHOULD include what it does AND when to use it
-  - SHOULD include specific keywords for discovery
-  - SHOULD NOT use first person (I can, I will, I'm, I help)
-  - SHOULD NOT use second person (You can, You should, You will)
+  - MUST be third person ("Generates...", "Analyzes...")
+  - MUST include what it does AND when to use it
+  - MUST include specific keywords for discovery
+  - MUST NOT use first person (I can, I will, I'm, I help)
+  - MUST NOT use second person (You can, You should, You will)
   - SHOULD include action verbs (analyze, create, generate, build, debug, optimize, validate)
   - SHOULD reference slash command if user-invocable
 
@@ -233,6 +233,22 @@ model: sonnet                     # Use Sonnet for balanced tasks
 
 **Avoid hardcoded model IDs** like `claude-opus-4-5-20251101` - they break on deprecation.
 
+### effort
+
+- **Type**: string
+- **Default**: (inherits from caller)
+- **Values**: `low`, `medium`, `high`, `max`
+- **Purpose**: Override model reasoning effort level
+- **Note**: `max` is only available with Opus 4.6
+- **Added**: v2.1.80 (March 2026)
+
+```yaml
+effort: high                         # More reasoning for complex tasks
+effort: low                          # Fast responses for simple tasks
+```
+
+*Source: [code.claude.com/docs/en/skills](https://code.claude.com/docs/en/skills)*
+
 ### context
 
 - **Type**: string
@@ -286,7 +302,7 @@ The marketplace 100-point validator scores them at top-level. Do NOT nest them u
 
 ```yaml
 ---
-# Recommended (Anthropic Spec)
+# Required (AgentSkills.io)
 name: skill-name
 description: |
   What it does. Use when [scenario].
@@ -302,6 +318,7 @@ license: MIT
 
 # Claude Code extensions (as needed)
 model: inherit
+# effort: high
 argument-hint: "[arg]"
 context: fork
 agent: general-purpose

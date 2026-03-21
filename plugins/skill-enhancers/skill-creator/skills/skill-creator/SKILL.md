@@ -28,21 +28,6 @@ packages that score well on the Intent Solutions 100-point rubric. It enforces t
 contradictions that would cost marketplace points. Supports two modes: create new skills from
 scratch with full validation, or grade/audit existing skills with actionable fix suggestions.
 
-## Table of Contents
-
-- [Instructions](#instructions) — Create mode (Steps 1-10) + Mode Detection
-- [Validation Workflow](#validation-workflow) — Grade/audit existing skills (Steps V1-V5)
-- [Examples](#examples) — Create, full package, and validate examples
-- [Edge Cases](#edge-cases) — Name conflicts, long content, legacy metadata
-- [Error Handling](#error-handling) — Common errors and solutions
-- [Resources](#resources) — Reference files and scripts
-- [Running and Evaluating Test Cases](#running-and-evaluating-test-cases) — Subagent-based eval with viewer
-- [Improving the Skill](#improving-the-skill) — Iteration loop based on feedback
-- [Description Optimization (Automated)](#description-optimization-automated) — Automated trigger accuracy tuning
-- [Advanced: Blind Comparison](#advanced-blind-comparison) — A/B testing between skill versions
-- [Packaging](#packaging) — Create distributable .skill files
-- [Platform-Specific Notes](#platform-specific-notes) — Claude.ai and Cowork adaptations
-
 ## Instructions
 
 ### Mode Detection
@@ -51,7 +36,16 @@ Determine user intent from their prompt:
 - **Create mode**: "create a skill", "build a skill", "new skill" -> proceed to Step 1
 - **Validate mode**: "validate", "check", "grade", "score", "audit" -> jump to Validation Workflow
 
+### Communicating with the User
+
+Pay attention to context cues to understand the user's technical level. Skill creator is used by people across a wide range of familiarity — from first-time coders to senior engineers. In the default case:
+- "evaluation" and "benchmark" are borderline but OK
+- For "JSON" and "assertion", check for cues the user knows these terms before using them without explanation
+- Briefly explain terms if in doubt
+
 ### Step 1: Understand Requirements
+
+If the current conversation already contains a workflow the user wants to capture (e.g., "turn this into a skill"), extract answers from the conversation history first — the tools used, the sequence of steps, corrections the user made, input/output formats observed. Confirm with the user before proceeding.
 
 Ask the user with AskUserQuestion:
 
@@ -200,36 +194,23 @@ Additional guidelines:
 - Concise — Claude is smart, don't over-explain
 - Concrete examples over abstract descriptions
 - Reference supporting files with relative markdown links: `[details](reference.md)` or `[API](references/api.md)` — Claude reads these on demand
-- Use `${CLAUDE_SKILL_DIR}/` in DCI/bash contexts only: `` !`cat ${CLAUDE_SKILL_DIR}/references/small.md` ``
+- Use `${CLAUDE_SKILL_DIR}/` in DCI/bash contexts only: exclamation + backtick-wrapped command, e.g. `cat ${CLAUDE_SKILL_DIR}/references/file.md`
 - Sections >20 lines (Output, Error Handling, Examples) → offload to `references/` with relative links
 - If skill has 3+ distinct user operations → split into individual `commands/*.md` files
 - Add DCI for common discovery: file existence checks, git status, tool version detection
 - Include edge cases that actually matter
 - No time-sensitive information
 - Consistent terminology throughout
+- **No surprise behavior**: Skills must not contain malware, exploit code, or content that could compromise security. A skill's behavior should not surprise the user if described honestly
 
 **String substitutions available:**
 - `$ARGUMENTS` / `$0`, `$1` - user-provided arguments (pair with `argument-hint` frontmatter)
-- `${CLAUDE_SESSION_ID}` - current session identifier
-
-**Dynamic Context Injection (DCI):**
-DCI runs shell commands BEFORE Claude sees the skill content, injecting output verbatim. This eliminates discovery tool calls — Claude starts with context already loaded.
-
-Syntax: `` !`command` `` on its own line (Anthropic preprocessing spec).
-
-Best practices:
-- Add a `## Current State` section with DCI directives right after the title
-- Always use fallbacks: `` !`terraform version 2>/dev/null || echo 'not installed'` ``
-- Keep injections small — summaries and version info, not full file contents
-- For skills that typically run 3+ discovery commands first, DCI saves those entire tool call rounds
-
-Example:
-```markdown
-## Current State
-!`git status --short`
-!`git log --oneline -5`
-!`node -v 2>/dev/null || echo 'N/A'`
-```
+- `${CLAUDE_SESSION_ID}` - current session ID
+- `` !`command` `` syntax — dynamic context injection (Anthropic spec feature):
+  - Runs shell command at skill activation time, injects stdout into body
+  - **Use for**: always-needed, small references (<5KB) — e.g., `!`cat ${CLAUDE_SKILL_DIR}/references/config.md``
+  - **Don't use for**: large references (>5KB), conditional content, or anything that varies by mode
+  - Conditional or large references → keep manual `Load ${CLAUDE_SKILL_DIR}/references/...` instructions
 
 ### Step 5: Create Supporting Files
 
@@ -242,12 +223,12 @@ Example:
 
 **References** (`references/`):
 - Heavy documentation that doesn't need to load at activation
-- TOC for files >100 lines
+- Use clear section headers for navigability (no TOC needed — wastes tokens)
 - One-level-deep references only (no `references/sub/dir/`)
 
 **Templates** (`templates/`):
 - Boilerplate files used for generation
-- Use clear variable syntax (`{{VARIABLE_NAME}}`)
+- Use clear placeholder syntax (`{{PLACEHOLDER}}`)
 
 **Assets** (`assets/`):
 - Static resources (images, configs, data files)
@@ -302,9 +283,13 @@ Run parallel evaluation: Claude A with skill installed vs Claude B without. Comp
 
 Common fixes: undertriggering -> pushier description, wrong format -> explicit output examples, over-constraining -> increase degrees of freedom.
 
+**Look for repeated work across test cases**: Read transcripts from test runs. If all test cases independently wrote similar helper scripts or took the same multi-step approach, that's a signal the skill should bundle that script in `scripts/`. Write it once and tell the skill to use it.
+
 ### Step 9: Optimize Description
 
 Create 20 trigger evaluation queries (10 should-trigger, 10 should-not-trigger). Split into train (14) and test (6) sets. Iterate description until >90% accuracy on both sets.
+
+**How skill triggering works:** Skills appear in Claude's available_skills list with their name + description. Claude decides whether to consult a skill based on that description. Important: Claude only consults skills for tasks it can't easily handle on its own — simple, one-step queries may not trigger a skill even if the description matches perfectly. Complex, multi-step, or specialized queries reliably trigger skills when the description matches. Design eval queries accordingly — make them substantive enough that Claude would benefit from consulting a skill.
 
 Tips: front-load distinctive keywords, include specific file types/tools/domains, add "Use when...", "Trigger with...", "Make sure to use whenever..." patterns. Avoid generic terms that overlap with other skills.
 
@@ -349,8 +334,8 @@ When the user wants to validate, grade, or audit an existing skill:
 ### Step V1: Locate the Skill
 
 Ask for the SKILL.md path or detect from context. Common locations:
-- `~/.claude/skills/<skill-name>/SKILL.md` (global)
-- `.claude/skills/<skill-name>/SKILL.md` (project)
+- `~/.claude/skills/{name}/SKILL.md` (global)
+- `.claude/skills/{name}/SKILL.md` (project)
 
 ### Step V2: Run Validator
 
@@ -477,7 +462,7 @@ Output:
 ## Resources
 
 **References:** `${CLAUDE_SKILL_DIR}/references/`
-- `source-of-truth.md` — Canonical spec | `frontmatter-spec.md` — Field reference | `validation-rules.md` — 100-point rubric
+- `source-of-truth.md` — Canonical spec ([AgentSkills.io](https://agentskills.io/specification), [Anthropic docs](https://code.claude.com/docs/en/skills), [Lee Han Chung deep dive](https://leehanchung.github.io/blogs/2025/10/26/claude-skills-deep-dive/)) | `frontmatter-spec.md` — Field reference | `validation-rules.md` — 100-point rubric
 - `workflows.md` — Workflow patterns | `output-patterns.md` — Output formats | `schemas.md` — JSON schemas (evals, grading, benchmarks)
 - `anthropic-comparison.md` — Gap analysis | `advanced-eval-workflow.md` — Eval, iteration, optimization, platform notes
 
