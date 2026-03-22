@@ -625,8 +625,8 @@ def score_spec_compliance(path: Path, body: str, fm: dict) -> dict:
     else:
         breakdown['field_coverage'] = (0, f"Low: {len(present_fields)}/{len(all_applicable)} fields ({coverage_pct:.0f}%)")
 
-    total = sum(v[0] for v in breakdown.values())
-    return {'score': total, 'max': 18, 'breakdown': breakdown}
+    total = min(sum(v[0] for v in breakdown.values()), 15)
+    return {'score': total, 'max': 15, 'breakdown': breakdown}
 
 
 def score_writing_style(path: Path, body: str, fm: dict) -> dict:
@@ -759,7 +759,7 @@ def calculate_modifiers(path: Path, body: str, fm: dict) -> dict:
     total = sum(v[0] for v in modifiers.values())
     # Cap modifiers at ±15
     total = max(-15, min(15, total))
-    return {'score': total, 'max_bonus': 6, 'max_penalty': -8, 'items': modifiers}
+    return {'score': total, 'max_bonus': 6, 'max_penalty': -7, 'items': modifiers}
 
 
 def grade_skill(path: Path, body: str, fm: dict) -> dict:
@@ -2685,7 +2685,7 @@ def populate_compliance_db(db_path: str, skill_results: list, agent_results: lis
                 fm_data, _ = parse_frontmatter(content)
                 fm = fm_data
         except Exception:
-            pass
+            pass  # Frontmatter parse failure — field counts default to 0
         anthropic_fields = len([k for k in fm if k in SKILL_FIELDS and SKILL_FIELDS[k].get('source') == 'anthropic'])
         enterprise_fields = len([k for k in fm if k in SKILL_FIELDS and SKILL_FIELDS[k].get('source') == 'enterprise'])
         total_fields = anthropic_fields + enterprise_fields
@@ -2695,7 +2695,7 @@ def populate_compliance_db(db_path: str, skill_results: list, agent_results: lis
             skill_file = Path(skill_path)
             mtime = datetime.fromtimestamp(skill_file.stat().st_mtime, tz=timezone.utc).isoformat() if skill_file.exists() else None
         except Exception:
-            mtime = None
+            mtime = None  # File stat failure — mtime unavailable
 
         skill_dir = Path(skill_path).parent if skill_path else Path('.')
         has_refs = 1 if (skill_dir / 'references').exists() else 0
