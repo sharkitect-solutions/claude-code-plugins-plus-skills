@@ -8148,7 +8148,7 @@
     {
       "name": "b12-claude-plugin",
       "source": "./plugins/community/b12-claude-plugin",
-      "description": "B12 Website Generator \u2014 an official plugin by B12.io. Ships a single auto-activating skill (website-generator) that collects a business name and description, then generates a production-ready B12 website signup link instantly.",
+      "description": "B12 Website Generator — an official plugin by B12.io. Ships a single auto-activating skill (website-generator) that collects a business name and description, then generates a production-ready B12 website signup link instantly.",
       "version": "1.0.0",
       "category": "community",
       "keywords": [
@@ -9163,6 +9163,1713 @@
       }
     },
     {
+      "name": "abridge-pack",
+      "source": "./plugins/saas-packs/abridge-pack",
+      "description": "Claude Code skill pack for Abridge (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "abridge",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "adobe-pack",
+      "source": "./plugins/saas-packs/adobe-pack",
+      "description": "Claude Code skill pack for Adobe (30 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "adobe",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "alchemy-pack",
+      "source": "./plugins/saas-packs/alchemy-pack",
+      "description": "Claude Code skill pack for Alchemy (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "alchemy",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "algolia-pack",
+      "source": "./plugins/saas-packs/algolia-pack",
+      "description": "Claude Code skill pack for Algolia (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "algolia",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "anima-pack",
+      "source": "./plugins/saas-packs/anima-pack",
+      "description": "Claude Code skill pack for Anima (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "anima",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "anthropic-pack",
+      "source": "./plugins/saas-packs/anthropic-pack",
+      "description": "Claude Code skill pack for Anthropic (30 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "anthropic",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "apify-pack",
+      "source": "./plugins/saas-packs/apify-pack",
+      "description": "Claude Code skill pack for Apify (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "apify",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "appfolio-pack",
+      "source": "./plugins/saas-packs/appfolio-pack",
+      "description": "Claude Code skill pack for AppFolio (18 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "appfolio",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "apple-notes-pack",
+      "source": "./plugins/saas-packs/apple-notes-pack",
+      "description": "Claude Code skill pack for Apple Notes (24 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "apple-notes",
+        "apple notes",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "assemblyai-pack",
+      "source": "./plugins/saas-packs/assemblyai-pack",
+      "description": "Claude Code skill pack for AssemblyAI (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "assemblyai",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "attio-pack",
+      "source": "./plugins/saas-packs/attio-pack",
+      "description": "Claude Code skill pack for Attio (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "attio",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "bamboohr-pack",
+      "source": "./plugins/saas-packs/bamboohr-pack",
+      "description": "Claude Code skill pack for BambooHR (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "bamboohr",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "brightdata-pack",
+      "source": "./plugins/saas-packs/brightdata-pack",
+      "description": "Claude Code skill pack for Bright Data (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "brightdata",
+        "bright data",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "canva-pack",
+      "source": "./plugins/saas-packs/canva-pack",
+      "description": "Claude Code skill pack for Canva (30 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "canva",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "castai-pack",
+      "source": "./plugins/saas-packs/castai-pack",
+      "description": "Claude Code skill pack for Cast AI (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "castai",
+        "cast ai",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "clari-pack",
+      "source": "./plugins/saas-packs/clari-pack",
+      "description": "Claude Code skill pack for Clari (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "clari",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "clickhouse-pack",
+      "source": "./plugins/saas-packs/clickhouse-pack",
+      "description": "Claude Code skill pack for ClickHouse (24 skills)",
+      "version": "1.0.0",
+      "category": "database",
+      "keywords": [
+        "clickhouse",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "clickup-pack",
+      "source": "./plugins/saas-packs/clickup-pack",
+      "description": "Claude Code skill pack for ClickUp (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "clickup",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "cohere-pack",
+      "source": "./plugins/saas-packs/cohere-pack",
+      "description": "Claude Code skill pack for Cohere (24 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "cohere",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "coreweave-pack",
+      "source": "./plugins/saas-packs/coreweave-pack",
+      "description": "Claude Code skill pack for CoreWeave (24 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "coreweave",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "elevenlabs-pack",
+      "source": "./plugins/saas-packs/elevenlabs-pack",
+      "description": "Claude Code skill pack for ElevenLabs (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "elevenlabs",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "fathom-pack",
+      "source": "./plugins/saas-packs/fathom-pack",
+      "description": "Claude Code skill pack for Fathom (18 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "fathom",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "figma-pack",
+      "source": "./plugins/saas-packs/figma-pack",
+      "description": "Claude Code skill pack for Figma (30 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "figma",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "finta-pack",
+      "source": "./plugins/saas-packs/finta-pack",
+      "description": "Claude Code skill pack for Finta (18 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "finta",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "flexport-pack",
+      "source": "./plugins/saas-packs/flexport-pack",
+      "description": "Claude Code skill pack for Flexport (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "flexport",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "flyio-pack",
+      "source": "./plugins/saas-packs/flyio-pack",
+      "description": "Claude Code skill pack for Fly.io (18 skills)",
+      "version": "1.0.0",
+      "category": "devops",
+      "keywords": [
+        "flyio",
+        "fly.io",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "fondo-pack",
+      "source": "./plugins/saas-packs/fondo-pack",
+      "description": "Claude Code skill pack for Fondo (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "fondo",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "framer-pack",
+      "source": "./plugins/saas-packs/framer-pack",
+      "description": "Claude Code skill pack for Framer (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "framer",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "glean-pack",
+      "source": "./plugins/saas-packs/glean-pack",
+      "description": "Claude Code skill pack for Glean (24 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "glean",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "grammarly-pack",
+      "source": "./plugins/saas-packs/grammarly-pack",
+      "description": "Claude Code skill pack for Grammarly (24 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "grammarly",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "hex-pack",
+      "source": "./plugins/saas-packs/hex-pack",
+      "description": "Claude Code skill pack for Hex (18 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "hex",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "hootsuite-pack",
+      "source": "./plugins/saas-packs/hootsuite-pack",
+      "description": "Claude Code skill pack for Hootsuite (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "hootsuite",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "hubspot-pack",
+      "source": "./plugins/saas-packs/hubspot-pack",
+      "description": "Claude Code skill pack for HubSpot (30 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "hubspot",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "intercom-pack",
+      "source": "./plugins/saas-packs/intercom-pack",
+      "description": "Claude Code skill pack for Intercom (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "intercom",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "klaviyo-pack",
+      "source": "./plugins/saas-packs/klaviyo-pack",
+      "description": "Claude Code skill pack for Klaviyo (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "klaviyo",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "linktree-pack",
+      "source": "./plugins/saas-packs/linktree-pack",
+      "description": "Claude Code skill pack for Linktree (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "linktree",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "lucidchart-pack",
+      "source": "./plugins/saas-packs/lucidchart-pack",
+      "description": "Claude Code skill pack for Lucidchart (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "lucidchart",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "mindtickle-pack",
+      "source": "./plugins/saas-packs/mindtickle-pack",
+      "description": "Claude Code skill pack for Mindtickle (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "mindtickle",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "miro-pack",
+      "source": "./plugins/saas-packs/miro-pack",
+      "description": "Claude Code skill pack for Miro (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "miro",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "navan-pack",
+      "source": "./plugins/saas-packs/navan-pack",
+      "description": "Claude Code skill pack for Navan (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "navan",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "notion-pack",
+      "source": "./plugins/saas-packs/notion-pack",
+      "description": "Claude Code skill pack for Notion (30 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "notion",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "onenote-pack",
+      "source": "./plugins/saas-packs/onenote-pack",
+      "description": "Claude Code skill pack for OneNote (18 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "onenote",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "oraclecloud-pack",
+      "source": "./plugins/saas-packs/oraclecloud-pack",
+      "description": "Claude Code skill pack for Oracle Cloud (24 skills)",
+      "version": "1.0.0",
+      "category": "devops",
+      "keywords": [
+        "oraclecloud",
+        "oracle cloud",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "palantir-pack",
+      "source": "./plugins/saas-packs/palantir-pack",
+      "description": "Claude Code skill pack for Palantir (24 skills)",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": [
+        "palantir",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "persona-pack",
+      "source": "./plugins/saas-packs/persona-pack",
+      "description": "Claude Code skill pack for Persona (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "persona",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "podium-pack",
+      "source": "./plugins/saas-packs/podium-pack",
+      "description": "Claude Code skill pack for Podium (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "podium",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "procore-pack",
+      "source": "./plugins/saas-packs/procore-pack",
+      "description": "Claude Code skill pack for Procore (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "procore",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "quicknode-pack",
+      "source": "./plugins/saas-packs/quicknode-pack",
+      "description": "Claude Code skill pack for QuickNode (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "quicknode",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "ramp-pack",
+      "source": "./plugins/saas-packs/ramp-pack",
+      "description": "Claude Code skill pack for Ramp (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "ramp",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "remofirst-pack",
+      "source": "./plugins/saas-packs/remofirst-pack",
+      "description": "Claude Code skill pack for RemoFirst (12 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "remofirst",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 12
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "runway-pack",
+      "source": "./plugins/saas-packs/runway-pack",
+      "description": "Claude Code skill pack for Runway (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "runway",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "salesforce-pack",
+      "source": "./plugins/saas-packs/salesforce-pack",
+      "description": "Claude Code skill pack for Salesforce (30 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "salesforce",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "salesloft-pack",
+      "source": "./plugins/saas-packs/salesloft-pack",
+      "description": "Claude Code skill pack for Salesloft (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "salesloft",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "serpapi-pack",
+      "source": "./plugins/saas-packs/serpapi-pack",
+      "description": "Claude Code skill pack for SerpApi (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "serpapi",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "shopify-pack",
+      "source": "./plugins/saas-packs/shopify-pack",
+      "description": "Claude Code skill pack for Shopify (30 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "shopify",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "snowflake-pack",
+      "source": "./plugins/saas-packs/snowflake-pack",
+      "description": "Claude Code skill pack for Snowflake (30 skills)",
+      "version": "1.0.0",
+      "category": "database",
+      "keywords": [
+        "snowflake",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 30
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "stackblitz-pack",
+      "source": "./plugins/saas-packs/stackblitz-pack",
+      "description": "Claude Code skill pack for StackBlitz (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "stackblitz",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "techsmith-pack",
+      "source": "./plugins/saas-packs/techsmith-pack",
+      "description": "Claude Code skill pack for TechSmith (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "techsmith",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "together-pack",
+      "source": "./plugins/saas-packs/together-pack",
+      "description": "Claude Code skill pack for Together AI (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "together",
+        "together ai",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "veeva-pack",
+      "source": "./plugins/saas-packs/veeva-pack",
+      "description": "Claude Code skill pack for Veeva (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "veeva",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "webflow-pack",
+      "source": "./plugins/saas-packs/webflow-pack",
+      "description": "Claude Code skill pack for Webflow (24 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "webflow",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 24
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "wispr-pack",
+      "source": "./plugins/saas-packs/wispr-pack",
+      "description": "Claude Code skill pack for Wispr (18 skills)",
+      "version": "1.0.0",
+      "category": "ai-ml",
+      "keywords": [
+        "wispr",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
+      "name": "workhuman-pack",
+      "source": "./plugins/saas-packs/workhuman-pack",
+      "description": "Claude Code skill pack for Workhuman (18 skills)",
+      "version": "1.0.0",
+      "category": "business-tools",
+      "keywords": [
+        "workhuman",
+        "saas",
+        "sdk",
+        "integration"
+      ],
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io",
+        "url": "https://github.com/jeremylongshore"
+      },
+      "components": {
+        "skills": 18
+      },
+      "verification": {
+        "score": 79,
+        "grade": "C",
+        "badge": "silver",
+        "lastValidated": "2026-03-21T00:00:00.000Z"
+      }
+    },
+    {
       "name": "pm-ai-partner",
       "source": "./plugins/productivity/pm-ai-partner",
       "description": "12 PM-specific agent skills, 6 workflow commands, 3 automation hooks for Product Managers",
@@ -9282,12 +10989,21 @@
       "version": "0.8.0",
       "category": "code-quality",
       "repository": "https://github.com/jeremylongshore/pr-to-prompt",
-      "author": { "name": "Jeremy Longshore", "email": "jeremy@intentsolutions.io" },
+      "author": {
+        "name": "Jeremy Longshore",
+        "email": "jeremy@intentsolutions.io"
+      },
       "license": "MIT",
       "featured": true,
       "external_sync": true,
       "mcpTools": 6,
-      "keywords": ["mcp", "pr-analysis", "intent-drift", "code-review", "agent-protocol"]
+      "keywords": [
+        "mcp",
+        "pr-analysis",
+        "intent-drift",
+        "code-review",
+        "agent-protocol"
+      ]
     },
     {
       "name": "slack-channel",
@@ -9295,7 +11011,14 @@
       "description": "Two-way Slack channel for Claude Code — chat from Slack DMs and channels via Socket Mode",
       "version": "0.1.0",
       "category": "productivity",
-      "keywords": ["slack", "channel", "mcp", "socket-mode", "chatops", "claude-code"],
+      "keywords": [
+        "slack",
+        "channel",
+        "mcp",
+        "socket-mode",
+        "chatops",
+        "claude-code"
+      ],
       "author": {
         "name": "Jeremy Longshore",
         "email": "jeremy@intentsolutions.io"
