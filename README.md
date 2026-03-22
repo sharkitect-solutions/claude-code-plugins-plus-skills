@@ -357,7 +357,7 @@ MIT License — See [LICENSE](000-docs/001-BL-LICN-license.txt) for details.
 
 <div align="center">
 
-**[Star this repo](https://github.com/jeremylongshore/claude-code-plugins)** if you find it useful
+**[Star this repo](https://github.com/jeremylongshore/claude-code-plugins-plus-skills)** if you find it useful
 
 **[Get Started](#quick-start)** | **[Browse Plugins](https://claudecodeplugins.io/explore)** | **[Contribute](#contributors)**
 
