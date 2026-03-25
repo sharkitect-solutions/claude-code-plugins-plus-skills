@@ -69,8 +69,20 @@ const blogCollection = defineCollection({
   })
 });
 
+const blogPostsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    tags: z.array(z.string()).optional().default([]),
+    featured: z.boolean().optional().default(false),
+  })
+});
+
 export const collections = {
   'plugins': pluginsCollection,
   'playbooks': playbooksCollection,
-  'blog': blogCollection
+  'blog': blogCollection,
+  'blog-posts': blogPostsCollection
 };
