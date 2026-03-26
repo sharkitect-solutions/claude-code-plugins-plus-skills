@@ -659,6 +659,43 @@ sources:
       - ".git/**"
       - "*.log"
 
+  - name: x-bug-triage
+    description: Closed-loop bug triage — X complaints → clusters → repo evidence → owner routing → Slack review → filed issues
+    repo: jeremylongshore/x-bug-triage-plugin
+    source_path: .
+    target_path: plugins/mcp/x-bug-triage
+    author:
+      name: Jeremy Longshore
+      github: jeremylongshore
+      email: jeremy@intentsolutions.io
+    license: MIT
+    category: devops
+    verified: true
+    include:
+      - ".claude-plugin/**"
+      - ".mcp.json"
+      - "skills/**"
+      - "agents/**"
+      - "hooks/**"
+      - "mcp/**"
+      - "lib/**"
+      - "config/**"
+      - "scripts/**"
+      - "integrations/**"
+      - "package.json"
+      - "tsconfig.base.json"
+      - "README.md"
+      - "LICENSE"
+    exclude:
+      - "node_modules/**"
+      - ".git/**"
+      - "*.log"
+      - "db/**"
+      - "data/**"
+      - "tests/**"
+      - "bun.lock"
+      - "**/.gitkeep"
+
   # ============================================================
   # Add more external sources below
   # ============================================================

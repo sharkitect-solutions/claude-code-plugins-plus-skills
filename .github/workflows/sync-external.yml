@@ -4,6 +4,9 @@ on:
   # schedule disabled — burns Actions minutes
   # - cron: '0 0 * * *'
 
+  repository_dispatch:
+    types: [external-plugin-sync]
+
   workflow_dispatch:
     inputs:
       force:
@@ -56,13 +59,15 @@ jobs:
           if [ "${{ inputs.force }}" = "true" ]; then
             ARGS="$ARGS --force"
           fi
-          if [ -n "${{ inputs.source }}" ]; then
-            ARGS="$ARGS --source=${{ inputs.source }}"
+          # Source from workflow_dispatch input or repository_dispatch payload
+          SOURCE="${{ inputs.source || github.event.client_payload.source }}"
+          if [ -n "$SOURCE" ]; then
+            ARGS="$ARGS --source=$SOURCE"
           fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
-          ARGS="$ARGS --verbose"
+          ARGS="$ARGS --force --verbose"
 
           node scripts/sync-external.mjs $ARGS
 

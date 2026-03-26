@@ -11059,6 +11059,26 @@
       "components": {
         "skills": 2
       }
+    },
+    {
+      "name": "x-bug-triage-plugin",
+      "source": "./plugins/mcp/x-bug-triage",
+      "description": "Closed-loop bug triage: X complaints → clusters → repo evidence → owner routing → Slack review → filed issues",
+      "version": "0.3.0",
+      "category": "devops",
+      "author": "Jeremy Longshore",
+      "keywords": ["bug-triage", "x-twitter", "slack", "devops", "mcp"],
+      "repository": "https://github.com/jeremylongshore/x-bug-triage-plugin",
+      "homepage": "https://tonsofskills.com",
+      "license": "MIT",
+      "featured": false,
+      "pricing": "free",
+      "external_sync": true,
+      "mcpTools": 6,
+      "components": {
+        "skills": 5,
+        "agents": 4
+      }
     }
   ]
 }
