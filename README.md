@@ -62,31 +62,31 @@ ccpi update                     # Pull latest versions
 
 ### 📦 Live npm Downloads
 
-Across **314 published packages** in the 
+Across **315 published packages** in the 
 [claude-code-plugins](https://www.npmjs.com/~jeremylongshore) namespace. Updated daily by GitHub Actions.
 
 | Window | Downloads |
 |--------|----------:|
-| Last 24 hours | 132 |
-| Last 7 days | 37,107 |
-| Last 30 days | 37,644 |
+| Last 24 hours | 421 |
+| Last 7 days | 37,651 |
+| Last 30 days | 38,210 |
 
 **Top 10 by last 30 days:**
 
 | # | Package | Last 30d |
 |---|---------|---------:|
-| 1 | [`@intentsolutionsio/ccpi`](https://www.npmjs.com/package/@intentsolutionsio/ccpi) | 312 |
-| 2 | [`@intentsolutionsio/crypto-portfolio-tracker`](https://www.npmjs.com/package/@intentsolutionsio/crypto-portfolio-tracker) | 152 |
-| 3 | [`@intentsolutionsio/ml-model-trainer`](https://www.npmjs.com/package/@intentsolutionsio/ml-model-trainer) | 150 |
-| 4 | [`@intentsolutionsio/compliance-checker`](https://www.npmjs.com/package/@intentsolutionsio/compliance-checker) | 148 |
-| 5 | [`@intentsolutionsio/wondelai-design-everyday-things`](https://www.npmjs.com/package/@intentsolutionsio/wondelai-design-everyday-things) | 147 |
-| 6 | [`@intentsolutionsio/api-test-automation`](https://www.npmjs.com/package/@intentsolutionsio/api-test-automation) | 146 |
-| 7 | [`@intentsolutionsio/database-health-monitor`](https://www.npmjs.com/package/@intentsolutionsio/database-health-monitor) | 145 |
-| 8 | [`@intentsolutionsio/database-recovery-manager`](https://www.npmjs.com/package/@intentsolutionsio/database-recovery-manager) | 145 |
-| 9 | [`@intentsolutionsio/unit-test-generator`](https://www.npmjs.com/package/@intentsolutionsio/unit-test-generator) | 145 |
-| 10 | [`@intentsolutionsio/wallet-portfolio-tracker`](https://www.npmjs.com/package/@intentsolutionsio/wallet-portfolio-tracker) | 145 |
+| 1 | [`@intentsolutionsio/ccpi`](https://www.npmjs.com/package/@intentsolutionsio/ccpi) | 326 |
+| 2 | [`@intentsolutionsio/options-flow-analyzer`](https://www.npmjs.com/package/@intentsolutionsio/options-flow-analyzer) | 171 |
+| 3 | [`@intentsolutionsio/ml-model-trainer`](https://www.npmjs.com/package/@intentsolutionsio/ml-model-trainer) | 151 |
+| 4 | [`@intentsolutionsio/compliance-checker`](https://www.npmjs.com/package/@intentsolutionsio/compliance-checker) | 149 |
+| 5 | [`@intentsolutionsio/blockchain-explorer-cli`](https://www.npmjs.com/package/@intentsolutionsio/blockchain-explorer-cli) | 148 |
+| 6 | [`@intentsolutionsio/local-tts`](https://www.npmjs.com/package/@intentsolutionsio/local-tts) | 148 |
+| 7 | [`@intentsolutionsio/openbb-terminal`](https://www.npmjs.com/package/@intentsolutionsio/openbb-terminal) | 147 |
+| 8 | [`@intentsolutionsio/database-health-monitor`](https://www.npmjs.com/package/@intentsolutionsio/database-health-monitor) | 146 |
+| 9 | [`@intentsolutionsio/database-recovery-manager`](https://www.npmjs.com/package/@intentsolutionsio/database-recovery-manager) | 146 |
+| 10 | [`@intentsolutionsio/unit-test-generator`](https://www.npmjs.com/package/@intentsolutionsio/unit-test-generator) | 146 |
 
-<sub>Last refreshed 2026-04-28T04:32:33.855Z.</sub>
+<sub>Last refreshed 2026-04-29T04:28:21.965Z.</sub>
 
 <!-- NPM-STATS:END -->
 
