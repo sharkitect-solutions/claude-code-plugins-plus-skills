@@ -62,31 +62,31 @@ ccpi update                     # Pull latest versions
 
 ### 📦 Live npm Downloads
 
-Across **315 published packages** in the 
+Across **316 published packages** in the 
 [claude-code-plugins](https://www.npmjs.com/~jeremylongshore) namespace. Updated daily by GitHub Actions.
 
 | Window | Downloads |
 |--------|----------:|
-| Last 24 hours | 421 |
-| Last 7 days | 37,651 |
-| Last 30 days | 38,210 |
+| Last 24 hours | 633 |
+| Last 7 days | 7,352 |
+| Last 30 days | 38,470 |
 
 **Top 10 by last 30 days:**
 
 | # | Package | Last 30d |
 |---|---------|---------:|
-| 1 | [`@intentsolutionsio/ccpi`](https://www.npmjs.com/package/@intentsolutionsio/ccpi) | 326 |
-| 2 | [`@intentsolutionsio/options-flow-analyzer`](https://www.npmjs.com/package/@intentsolutionsio/options-flow-analyzer) | 171 |
-| 3 | [`@intentsolutionsio/ml-model-trainer`](https://www.npmjs.com/package/@intentsolutionsio/ml-model-trainer) | 151 |
-| 4 | [`@intentsolutionsio/compliance-checker`](https://www.npmjs.com/package/@intentsolutionsio/compliance-checker) | 149 |
-| 5 | [`@intentsolutionsio/blockchain-explorer-cli`](https://www.npmjs.com/package/@intentsolutionsio/blockchain-explorer-cli) | 148 |
-| 6 | [`@intentsolutionsio/local-tts`](https://www.npmjs.com/package/@intentsolutionsio/local-tts) | 148 |
-| 7 | [`@intentsolutionsio/openbb-terminal`](https://www.npmjs.com/package/@intentsolutionsio/openbb-terminal) | 147 |
-| 8 | [`@intentsolutionsio/database-health-monitor`](https://www.npmjs.com/package/@intentsolutionsio/database-health-monitor) | 146 |
-| 9 | [`@intentsolutionsio/database-recovery-manager`](https://www.npmjs.com/package/@intentsolutionsio/database-recovery-manager) | 146 |
-| 10 | [`@intentsolutionsio/unit-test-generator`](https://www.npmjs.com/package/@intentsolutionsio/unit-test-generator) | 146 |
+| 1 | [`@intentsolutionsio/market-price-tracker`](https://www.npmjs.com/package/@intentsolutionsio/market-price-tracker) | 200 |
+| 2 | [`@intentsolutionsio/excel-analyst-pro`](https://www.npmjs.com/package/@intentsolutionsio/excel-analyst-pro) | 178 |
+| 3 | [`@intentsolutionsio/options-flow-analyzer`](https://www.npmjs.com/package/@intentsolutionsio/options-flow-analyzer) | 175 |
+| 4 | [`@intentsolutionsio/openbb-terminal`](https://www.npmjs.com/package/@intentsolutionsio/openbb-terminal) | 165 |
+| 5 | [`@intentsolutionsio/crypto-portfolio-tracker`](https://www.npmjs.com/package/@intentsolutionsio/crypto-portfolio-tracker) | 158 |
+| 6 | [`@intentsolutionsio/crypto-tax-calculator`](https://www.npmjs.com/package/@intentsolutionsio/crypto-tax-calculator) | 153 |
+| 7 | [`@intentsolutionsio/compliance-checker`](https://www.npmjs.com/package/@intentsolutionsio/compliance-checker) | 151 |
+| 8 | [`@intentsolutionsio/blockchain-explorer-cli`](https://www.npmjs.com/package/@intentsolutionsio/blockchain-explorer-cli) | 149 |
+| 9 | [`@intentsolutionsio/api-test-automation`](https://www.npmjs.com/package/@intentsolutionsio/api-test-automation) | 148 |
+| 10 | [`@intentsolutionsio/database-health-monitor`](https://www.npmjs.com/package/@intentsolutionsio/database-health-monitor) | 148 |
 
-<sub>Last refreshed 2026-04-29T04:28:21.965Z.</sub>
+<sub>Last refreshed 2026-04-30T04:30:29.488Z.</sub>
 
 <!-- NPM-STATS:END -->
 
