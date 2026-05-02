@@ -62,31 +62,31 @@ ccpi update                     # Pull latest versions
 
 ### 📦 Live npm Downloads
 
-Across **314 published packages** in the 
+Across **309 published packages** in the 
 [claude-code-plugins](https://www.npmjs.com/~jeremylongshore) namespace. Updated daily by GitHub Actions.
 
 | Window | Downloads |
 |--------|----------:|
-| Last 24 hours | 197 |
-| Last 7 days | 4,888 |
-| Last 30 days | 38,531 |
+| Last 24 hours | 346 |
+| Last 7 days | 3,644 |
+| Last 30 days | 38,127 |
 
 **Top 10 by last 30 days:**
 
 | # | Package | Last 30d |
 |---|---------|---------:|
-| 1 | [`@intentsolutionsio/ccpi`](https://www.npmjs.com/package/@intentsolutionsio/ccpi) | 340 |
-| 2 | [`@intentsolutionsio/market-price-tracker`](https://www.npmjs.com/package/@intentsolutionsio/market-price-tracker) | 201 |
-| 3 | [`@intentsolutionsio/excel-analyst-pro`](https://www.npmjs.com/package/@intentsolutionsio/excel-analyst-pro) | 178 |
-| 4 | [`@intentsolutionsio/nft-rarity-analyzer`](https://www.npmjs.com/package/@intentsolutionsio/nft-rarity-analyzer) | 170 |
-| 5 | [`@intentsolutionsio/openbb-terminal`](https://www.npmjs.com/package/@intentsolutionsio/openbb-terminal) | 165 |
-| 6 | [`@intentsolutionsio/crypto-tax-calculator`](https://www.npmjs.com/package/@intentsolutionsio/crypto-tax-calculator) | 153 |
-| 7 | [`@intentsolutionsio/blockchain-explorer-cli`](https://www.npmjs.com/package/@intentsolutionsio/blockchain-explorer-cli) | 152 |
-| 8 | [`@intentsolutionsio/ml-model-trainer`](https://www.npmjs.com/package/@intentsolutionsio/ml-model-trainer) | 152 |
-| 9 | [`@intentsolutionsio/local-tts`](https://www.npmjs.com/package/@intentsolutionsio/local-tts) | 150 |
-| 10 | [`@intentsolutionsio/skill-creator`](https://www.npmjs.com/package/@intentsolutionsio/skill-creator) | 150 |
+| 1 | [`@intentsolutionsio/ccpi`](https://www.npmjs.com/package/@intentsolutionsio/ccpi) | 339 |
+| 2 | [`@intentsolutionsio/market-price-tracker`](https://www.npmjs.com/package/@intentsolutionsio/market-price-tracker) | 202 |
+| 3 | [`@intentsolutionsio/nft-rarity-analyzer`](https://www.npmjs.com/package/@intentsolutionsio/nft-rarity-analyzer) | 171 |
+| 4 | [`@intentsolutionsio/openbb-terminal`](https://www.npmjs.com/package/@intentsolutionsio/openbb-terminal) | 166 |
+| 5 | [`@intentsolutionsio/skill-creator`](https://www.npmjs.com/package/@intentsolutionsio/skill-creator) | 155 |
+| 6 | [`@intentsolutionsio/crypto-tax-calculator`](https://www.npmjs.com/package/@intentsolutionsio/crypto-tax-calculator) | 154 |
+| 7 | [`@intentsolutionsio/blockchain-explorer-cli`](https://www.npmjs.com/package/@intentsolutionsio/blockchain-explorer-cli) | 153 |
+| 8 | [`@intentsolutionsio/market-movers-scanner`](https://www.npmjs.com/package/@intentsolutionsio/market-movers-scanner) | 150 |
+| 9 | [`@intentsolutionsio/api-test-automation`](https://www.npmjs.com/package/@intentsolutionsio/api-test-automation) | 149 |
+| 10 | [`@intentsolutionsio/contract-test-validator`](https://www.npmjs.com/package/@intentsolutionsio/contract-test-validator) | 149 |
 
-<sub>Last refreshed 2026-05-01T04:44:20.613Z.</sub>
+<sub>Last refreshed 2026-05-02T04:17:30.644Z.</sub>
 
 <!-- NPM-STATS:END -->
 
